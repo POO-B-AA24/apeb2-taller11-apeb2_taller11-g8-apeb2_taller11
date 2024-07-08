@@ -27,14 +27,16 @@ public class Ejercicio11 {
             switch (inicio) {
                 case 1:
                     System.out.println("-----------------------------------------------");
-                    System.out.println("CREACION DE PERSONAJES:");
+                    System.out.println("        LOBBY DE CREACION DE PERSONAJE         ");
                     System.out.println("-----------------------------------------------");
+                    System.out.println("INGRESE TIPO DE COMBATIENTE DE SU PERSONAJE ");
                     System.out.println("1. GUERRERO");
                     System.out.println("2. ARQUERO");
                     System.out.println("3. MAGO");
                     int opcion = scanner.nextInt();
                     switch (opcion) {
                         case 1:
+                            System.out.println("-------------------------------------------------");
                             System.out.print("INGRESE LA FUERZA DEL GUERRERO (ENTRE 0 Y 100): ");
                             int fuerza = scanner.nextInt();
                             ArrayList<String> habilidadesCuerpoList = new ArrayList<>();
@@ -88,7 +90,8 @@ public class Ejercicio11 {
                             break;
 
                         case 2:
-                            System.out.print("INGRESE EL PORCENTAJE DE PRECISIÓN DEL ARQUERO (ENTRE 0 Y 100): ");
+                            System.out.println("------------------------------------------------------------------");
+                            System.out.print("\nINGRESE EL PORCENTAJE DE PRECISIÓN DEL ARQUERO (ENTRE 0 Y 100): ");
                             double precision = scanner.nextDouble();
                             ArrayList<String> habilidadesDistanciaList = new ArrayList<>();
                             System.out.println("SELECCIONE HASTA 3 HABILIDADES DE DISTANCIA:");
@@ -139,6 +142,7 @@ public class Ejercicio11 {
                             break;
 
                         case 3:
+                            System.out.println("----------------------------------------------------");
                             System.out.print("INGRESE EL PODER MÁGICO DEL MAGO (ENTRE 1 Y 100): ");
                             int poderMagico = scanner.nextInt();
                             System.out.println("SELECCIONE UNO DE LOS TIPOS DE MAGOS:");
@@ -184,14 +188,14 @@ public class Ejercicio11 {
                     }
 
                     // Mostrar los personajes creados
-                    System.out.println("PERSONAJES CREADOS:");
+                    System.out.println("\nPERSONAJES CREADOS:");
                     for (Personaje personaje : listaPersonajes) {
-                        System.out.println(personaje.getClass().getSimpleName() + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe());
+                        System.out.println(personaje.getClass().getSimpleName() + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe()+"\n");
                     }
 
                     break;
                 case 2:
-                    System.out.println("\nDUELO DE LEYENDAS ES UN EMOCIONANTE JUEGO DE ROL 1V1 DONDE PUEDES ELEGIR ENTRE TRES TIPOS DE PERSONAJES: GUERREROS, MAGOS Y ARQUEROS.");
+                    System.out.println("DUELO DE LEYENDAS ES UN EMOCIONANTE JUEGO DE ROL 1V1 DONDE PUEDES ELEGIR ENTRE TRES TIPOS DE PERSONAJES: GUERREROS, MAGOS Y ARQUEROS.");
                     System.out.println("CADA TIPO DE PERSONAJE TIENE HABILIDADES ÚNICAS QUE PUEDES UTILIZAR PARA DERROTAR A TU OPONENTE.\n");
                     break;
 
