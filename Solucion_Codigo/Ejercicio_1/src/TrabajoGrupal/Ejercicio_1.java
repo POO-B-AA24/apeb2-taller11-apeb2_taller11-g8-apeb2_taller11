@@ -22,11 +22,10 @@ public class Ejercicio_1 {
         System.out.println("2. DESCRIPCION DEL JUEGO");
         System.out.println("3. DEDICATORIA");
         System.out.println("4. SALIR");
-
+        System.out.print("Ingrese su opción: ");
+        int inicio = scanner.nextInt();
         int c = 0;
         while (c < 2) {
-            System.out.print("Ingrese su opción: ");
-            int inicio = scanner.nextInt();
             switch (inicio) {
                 case 1:
                     System.out.println("-----------------------------------------------");
@@ -192,10 +191,11 @@ public class Ejercicio_1 {
                             System.out.println("OPCION INCORRECTA.");
                             break;
                     }
-
+                    int chiflin = 0;
                     System.out.println("\nPERSONAJES CREADOS:");
                     for (Personaje personaje : listaPersonajes) {
-                        System.out.println(personaje.getClass().getSimpleName() + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe()+ " DANIO: " +personaje.ataque() + "\n");
+                        System.out.println(personaje.getClass().getSimpleName() +" "+chiflin+1 + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe() + " DANIO: " + personaje.ataque() + "\n");
+                        chiflin++;
                     }
                     if (listaPersonajes.size() >= 2) {
                         Personaje personaje1 = listaPersonajes.get(0);
@@ -203,11 +203,11 @@ public class Ejercicio_1 {
 
                         int danoPersonaje1 = personaje1.ataque();
                         int danoPersonaje2 = personaje2.ataque();
-
+                        int jeank = 0;
                         if (danoPersonaje1 > danoPersonaje2) {
-                            System.out.println("El " + personaje1.getClass().getSimpleName() + " ha ganado la pelea.");
+                            System.out.println("El " + personaje1.getClass().getSimpleName()+(jeank +1) + " ha ganado la pelea.");
                         } else if (danoPersonaje2 > danoPersonaje1) {
-                            System.out.println("El " + personaje2.getClass().getSimpleName() + " ha ganado la pelea.");
+                            System.out.println("El " + personaje2.getClass().getSimpleName()+(jeank+2) + " ha ganado la pelea.");
                         } else {
                             System.out.println("Empate. Ambos personajes han hecho el mismo daño.");
                         }
@@ -378,7 +378,7 @@ class Mago extends Personaje {
         for (String hechizo : hechizos) {
             danoPromedio += getDano(hechizo);
         }
-        return (danoPromedio / hechizos.size())+getPoderMagico();
+        return (danoPromedio / hechizos.size()) + getPoderMagico();
     }
 
     public int getDano(String hechizo) {
@@ -480,7 +480,7 @@ class Arquero extends Personaje {
             default:
 
         }
-        return (int) ((int) (danoBase * (precision / 100.0))+getPrecision());
+        return (int) ((int) (danoBase * (precision / 100.0)) + getPrecision());
     }
 
 }
