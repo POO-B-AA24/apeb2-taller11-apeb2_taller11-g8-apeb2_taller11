@@ -6,27 +6,25 @@ import java.util.Scanner;
 public class Ejercicio11 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner siu = new Scanner(System.in);
         ArrayList<Personaje> listaPersonajes = new ArrayList<>();
-
-        System.out.println("-------------------------------------------------------");
-        System.out.println("                     MENU DE INICIO                    ");
-        System.out.println("             BIENVENIDO A DUELO DE LEYENDAS            ");
-        System.out.println("                           -                           ");
-        System.out.println("            By: JuanP Landi and Emilio Pena            ");
-        System.out.println("-------------------------------------------------------");
-        System.out.println("");
-        System.out.println("SELECCIONE UNA OPCION PARA CONTINUAR!!");
-        System.out.println("--------------------------------------");
-        System.out.println("1. JUGAR");
-        System.out.println("2. DESCRIPCION DEL JUEGO");
-        System.out.println("3. DEDICATORIA");
-        System.out.println("4. SALIR");
-
-        int c = 0;
-        while (c < 2) {
+        while (true) {            
+            System.out.println("-------------------------------------------------------");
+            System.out.println("                     MENU DE INICIO                    ");
+            System.out.println("             BIENVENIDO A DUELO DE LEYENDAS            ");
+            System.out.println("                           -                           ");
+            System.out.println("            By: JuanP Landi and Emilio Pena            ");
+            System.out.println("-------------------------------------------------------");
+            System.out.println("");
+            System.out.println("SELECCIONE UNA OPCION PARA CONTINUAR!!");
+            System.out.println("--------------------------------------");
+            System.out.println("1. JUGAR");
+            System.out.println("2. DESCRIPCION DEL JUEGO");
+            System.out.println("3. DEDICATORIA");
+            System.out.println("4. SALIR");
             System.out.print("Ingrese su opción: ");
-            int inicio = scanner.nextInt();
+            int inicio = siu.nextInt();
+
             switch (inicio) {
                 case 1:
                     System.out.println("-----------------------------------------------");
@@ -37,12 +35,12 @@ public class Ejercicio11 {
                     System.out.println("2. ARQUERO");
                     System.out.println("3. MAGO");
 
-                    int opcion = scanner.nextInt();
+                    int opcion = siu.nextInt();
                     switch (opcion) {
                         case 1:
                             System.out.println("-------------------------------------------------");
                             System.out.print("INGRESE LA FUERZA DEL GUERRERO (ENTRE 0 Y 100): ");
-                            int fuerza = scanner.nextInt();
+                            int fuerza = siu.nextInt();
                             ArrayList<String> habilidadesCuerpoList = new ArrayList<>();
                             System.out.println("-------------------------------------------------");
                             System.out.println("SELECCIONE HASTA 3 HABILIDADES CUERPO A CUERPO:");
@@ -54,7 +52,7 @@ public class Ejercicio11 {
                             int habilidadesSeleccionadas = 0;
                             while (habilidadesSeleccionadas < 3) {
                                 System.out.print("INGRESE LA OPCIÓN DE HABILIDAD (0 PARA TERMINAR): ");
-                                int habilidadOpcion = scanner.nextInt();
+                                int habilidadOpcion = siu.nextInt();
                                 if (habilidadOpcion == 0) {
                                     if (habilidadesCuerpoList.isEmpty()) {
                                         System.out.println("DEBE SELECCIONAR AL MENOS UNA HABILIDAD.");
@@ -96,7 +94,7 @@ public class Ejercicio11 {
                         case 2:
                             System.out.println("------------------------------------------------------------------");
                             System.out.print("\nINGRESE EL PORCENTAJE DE PRECISIÓN DEL ARQUERO (ENTRE 0 Y 100): ");
-                            double precision = scanner.nextDouble();
+                            double precision = siu.nextDouble();
                             ArrayList<String> habilidadesDistanciaList = new ArrayList<>();
                             System.out.println("------------------------------------------------------------------");
                             System.out.println("SELECCIONE HASTA 3 HABILIDADES DE DISTANCIA:");
@@ -108,7 +106,7 @@ public class Ejercicio11 {
                             int seleccion = 0;
                             while (seleccion < 3) {
                                 System.out.print("INGRESE LA OPCIÓN DE HABILIDAD (0 PARA TERMINAR): ");
-                                int habilidadOpcion = scanner.nextInt();
+                                int habilidadOpcion = siu.nextInt();
                                 if (habilidadOpcion == 0) {
                                     if (habilidadesDistanciaList.isEmpty()) {
                                         System.out.println("DEBE SELECCIONAR AL MENOS UNA HABILIDAD.");
@@ -149,17 +147,17 @@ public class Ejercicio11 {
                         case 3:
                             System.out.println("----------------------------------------------------");
                             System.out.print("INGRESE EL PODER MÁGICO DEL MAGO (ENTRE 1 Y 100): ");
-                            int poderMagico = scanner.nextInt();
+                            int poderMagico = siu.nextInt();
                             System.out.println("----------------------------------------------------");
                             System.out.println("SELECCIONE UNO DE LOS TIPOS DE MAGOS:");
                             System.out.println("1. MAGO DE HIELO");
                             System.out.println("2. MAGO DE FUEGO");
                             System.out.println("3. MAGO ELÉCTRICO");
-                            int tipoMago = scanner.nextInt();
+                            int tipoMago = siu.nextInt();
 
                             while (poderMagico < 1 || poderMagico > 100) {
                                 System.out.print("PODER MÁGICO INVÁLIDO. INGRESE UN VALOR ENTRE 1 Y 100: ");
-                                poderMagico = scanner.nextInt();
+                                poderMagico = siu.nextInt();
                             }
 
                             ArrayList<String> hechizosList = new ArrayList<>();
@@ -195,7 +193,7 @@ public class Ejercicio11 {
 
                     System.out.println("\nPERSONAJES CREADOS:");
                     for (Personaje personaje : listaPersonajes) {
-                        System.out.println(personaje.getClass().getSimpleName() + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe() + "\n");
+                        System.out.println(personaje.getClass().getSimpleName() + ": " + personaje.getPuntoVida() + " PUNTOS DE VIDA, NIVEL " + personaje.getNivelExpe() + ", DANIO "+ personaje.ataque() +"\n");
                     }
                     if (listaPersonajes.size() >= 2) {
                         Personaje personaje1 = listaPersonajes.get(0);
@@ -203,20 +201,20 @@ public class Ejercicio11 {
 
                         int danoPersonaje1 = personaje1.ataque();
                         int danoPersonaje2 = personaje2.ataque();
-
+                        int jeankita = 0;
                         if (danoPersonaje1 > danoPersonaje2) {
-                            System.out.println("El " + personaje1.getClass().getSimpleName() + " ha ganado la pelea.");
+                            System.out.println("El " + personaje1.getClass().getSimpleName()+(jeankita+1) + " ha ganado la pelea.");
                         } else if (danoPersonaje2 > danoPersonaje1) {
-                            System.out.println("El " + personaje2.getClass().getSimpleName() + " ha ganado la pelea.");
+                            System.out.println("El " + personaje2.getClass().getSimpleName()+(jeankita+2) + " ha ganado la pelea.");
                         } else {
                             System.out.println("Empate. Ambos personajes han hecho el mismo daño.");
                         }
-                    }else{
+                    } else {
                         System.out.println("No hay suficientes personajes en la lista.");
                     }
                     break;
-                    
-                    case 2:
+
+                case 2:
                     System.out.println("\nBIENVENIDO AL JUEGO DE DUELO DE LEYENDAS.");
                     System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
                     System.out.println("DUELO DE LEYENDAS ES UN EMOCIONANTE JUEGO DE ROL 1V1 DONDE PUEDES ELEGIR ENTRE TRES TIPOS DE PERSONAJES: GUERREROS, MAGOS Y ARQUEROS.");
@@ -238,249 +236,249 @@ public class Ejercicio11 {
                     System.out.println("OPCION INCORRECTA.");
                     break;
             }
-            c++;
-            }
+            
         }
     }
+}
 
-    abstract class Personaje {
+abstract class Personaje {
 
-        protected double puntoVida;
-        protected int nivelExpe;
+    protected double puntoVida;
+    protected int nivelExpe;
 
-        public Personaje(double puntoVida, int nivelExpe) {
-            this.puntoVida = puntoVida;
-            this.nivelExpe = nivelExpe;
-        }
-
-        public void setPuntoVida(double puntoVida) {
-            this.puntoVida = puntoVida;
-        }
-
-        public void setNivelExpe(int nivelExpe) {
-            this.nivelExpe = nivelExpe;
-        }
-
-        public double getPuntoVida() {
-            return puntoVida;
-        }
-
-        public int getNivelExpe() {
-            return nivelExpe;
-        }
-
-        public abstract void defensa();
-
-        public abstract int ataque();
-
+    public Personaje(double puntoVida, int nivelExpe) {
+        this.puntoVida = puntoVida;
+        this.nivelExpe = nivelExpe;
     }
 
-    class Guerrero extends Personaje {
-
-        private int fuerza;
-        private ArrayList<String> habilidadesCuerpo;
-
-        public Guerrero(int fuerza, ArrayList<String> habilidadesCuerpo, double puntoVida, int nivelExpe) {
-            super(puntoVida, nivelExpe);
-            this.fuerza = fuerza;
-            this.habilidadesCuerpo = habilidadesCuerpo;
-        }
-
-        public void setFuerza(int fuerza) {
-            this.fuerza = fuerza;
-        }
-
-        public void setHabilidadesCuerpo(ArrayList<String> habilidadesCuerpo) {
-            this.habilidadesCuerpo = habilidadesCuerpo;
-        }
-
-        public int getFuerza() {
-            return fuerza;
-        }
-
-        public ArrayList<String> getHabilidadesCuerpo() {
-            return habilidadesCuerpo;
-        }
-
-        public void defensa() {
-        }
-
-        @Override
-        public int ataque() {
-            // Devuelve el daño promedio de las habilidades del guerrero
-            int danoPromedio = 0;
-            for (String habilidad : habilidadesCuerpo) {
-                danoPromedio += getDano(habilidad);
-            }
-            return danoPromedio / habilidadesCuerpo.size();
-        }
-
-        public int getDano(String habilidad) {
-            int danoBase = 0;
-            switch (habilidad) {
-                case "Punietazo":
-                    danoBase = 10;
-                    break;
-                case "Patada":
-                    danoBase = 15;
-                    break;
-                case "Patada Voladora":
-                    danoBase = 20;
-                    break;
-                case "Hachazo":
-                    danoBase = 25;
-                    break;
-                case "Cabezazo":
-                    danoBase = 30;
-                    break;
-                default:
-                    
-            }
-            return danoBase + fuerza;
-        }
-
+    public void setPuntoVida(double puntoVida) {
+        this.puntoVida = puntoVida;
     }
 
-    class Mago extends Personaje {
-
-        private ArrayList<String> hechizos;
-        private int poderMagico;
-
-        public Mago(ArrayList<String> hechizos, int poderMagico, double puntoVida, int nivelExpe) {
-            super(puntoVida, nivelExpe);
-            this.hechizos = hechizos;
-            this.poderMagico = poderMagico;
-        }
-
-        public ArrayList<String> getHechizos() {
-            return hechizos;
-        }
-
-        public void setHechizos(ArrayList<String> hechizos) {
-            this.hechizos = hechizos;
-        }
-
-        public int getPoderMagico() {
-            return poderMagico;
-        }
-
-        public void setPoderMagico(int poderMagico) {
-            this.poderMagico = poderMagico;
-        }
-
-        public void defensa() {
-        }
-
-        @Override
-        public int ataque() {
-            // Devuelve el daño promedio de los hechizos del mago
-            int danoPromedio = 0;
-            for (String hechizo : hechizos) {
-                danoPromedio += getDano(hechizo);
-            }
-            return danoPromedio / hechizos.size();
-        }
-
-        public int getDano(String hechizo) {
-            int danoBase = 0;
-            switch (hechizo) {
-                case "Escarcha":
-                    danoBase = 15;
-                    break;
-                case "Tormenta de Hielo":
-                    danoBase = 30;
-                    break;
-                case "Bola de Hielo":
-                    danoBase = 25;
-                    break;
-                case "Bola de Fuego":
-                    danoBase = 30;
-                    break;
-                case "Inferno":
-                    danoBase = 40;
-                    break;
-                case "Lanzallamas":
-                    danoBase = 35;
-                    break;
-                case "Descarga Electrica":
-                    danoBase = 20;
-                    break;
-                case "Rayo Electrico":
-                    danoBase = 25;
-                    break;
-                case "Tormenta Electrica":
-                    danoBase = 35;
-                    break;
-                default:
-                    
-            }
-            return danoBase + poderMagico;
-        }
+    public void setNivelExpe(int nivelExpe) {
+        this.nivelExpe = nivelExpe;
     }
 
-    class Arquero extends Personaje {
-
-        private double precision;
-        private ArrayList<String> habilidadesDistancia;
-
-        public Arquero(double precision, ArrayList<String> habilidadesDistancia, double puntoVida, int nivelExpe) {
-            super(puntoVida, nivelExpe);
-            this.precision = precision;
-            this.habilidadesDistancia = habilidadesDistancia;
-        }
-
-        public double getPrecision() {
-            return precision;
-        }
-
-        public void setPrecision(double precision) {
-            this.precision = precision;
-        }
-
-        public ArrayList<String> getHabilidadesDistancia() {
-            return habilidadesDistancia;
-        }
-
-        public void setHabilidadesDistancia(ArrayList<String> habilidadesDistancia) {
-            this.habilidadesDistancia = habilidadesDistancia;
-        }
-
-        public void defensa() {
-        }
-
-        @Override
-        public int ataque() {
-            // Devuelve el daño promedio de las habilidades del arquero
-            int danoPromedio = 0;
-            for (String habilidad : habilidadesDistancia) {
-                danoPromedio += getDano(habilidad);
-            }
-            return danoPromedio / habilidadesDistancia.size();
-        }
-
-        public int getDano(String habilidad) {
-            int danoBase = 0;
-            switch (habilidad) {
-                case "Disparo aturdidor":
-                    danoBase = 10;
-                    break;
-                case "Disparo a dos objetivos":
-                    danoBase = 15;
-                    break;
-                case "Disparo certero":
-                    danoBase = 20;
-                    precision = 100; // Aumenta la precisión al 100%
-                    break;
-                case "Trampa de oso":
-                    danoBase = 25;
-                    break;
-                case "Disparo elemental":
-                    danoBase = 40; // Hace el doble de daño al 200%
-                    break;
-                default:
-                    
-            }
-            return (int) (danoBase * (precision / 100.0));
-        }
-
+    public double getPuntoVida() {
+        return puntoVida;
     }
+
+    public int getNivelExpe() {
+        return nivelExpe;
+    }
+
+    public abstract void defensa();
+
+    public abstract int ataque();
+
+}
+
+class Guerrero extends Personaje {
+
+    private int fuerza;
+    private ArrayList<String> habilidadesCuerpo;
+
+    public Guerrero(int fuerza, ArrayList<String> habilidadesCuerpo, double puntoVida, int nivelExpe) {
+        super(puntoVida, nivelExpe);
+        this.fuerza = fuerza;
+        this.habilidadesCuerpo = habilidadesCuerpo;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public void setHabilidadesCuerpo(ArrayList<String> habilidadesCuerpo) {
+        this.habilidadesCuerpo = habilidadesCuerpo;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public ArrayList<String> getHabilidadesCuerpo() {
+        return habilidadesCuerpo;
+    }
+
+    public void defensa() {
+    }
+
+    @Override
+    public int ataque() {
+        // Devuelve el daño promedio de las habilidades del guerrero
+        int danoPromedio = 0;
+        for (String habilidad : habilidadesCuerpo) {
+            danoPromedio += getDano(habilidad);
+        }
+        return (danoPromedio / habilidadesCuerpo.size())+ getFuerza();
+    }
+
+    public int getDano(String habilidad) {
+        int danoBase = 0;
+        switch (habilidad) {
+            case "Punietazo":
+                danoBase = 10;
+                break;
+            case "Patada":
+                danoBase = 15;
+                break;
+            case "Patada Voladora":
+                danoBase = 20;
+                break;
+            case "Hachazo":
+                danoBase = 25;
+                break;
+            case "Cabezazo":
+                danoBase = 30;
+                break;
+            default:
+
+        }
+        return danoBase + fuerza;
+    }
+
+}
+
+class Mago extends Personaje {
+
+    private ArrayList<String> hechizos;
+    private int poderMagico;
+
+    public Mago(ArrayList<String> hechizos, int poderMagico, double puntoVida, int nivelExpe) {
+        super(puntoVida, nivelExpe);
+        this.hechizos = hechizos;
+        this.poderMagico = poderMagico;
+    }
+
+    public ArrayList<String> getHechizos() {
+        return hechizos;
+    }
+
+    public void setHechizos(ArrayList<String> hechizos) {
+        this.hechizos = hechizos;
+    }
+
+    public int getPoderMagico() {
+        return poderMagico;
+    }
+
+    public void setPoderMagico(int poderMagico) {
+        this.poderMagico = poderMagico;
+    }
+
+    public void defensa() {
+    }
+
+    @Override
+    public int ataque() {
+        // Devuelve el daño promedio de los hechizos del mago
+        int danoPromedio = 0;
+        for (String hechizo : hechizos) {
+            danoPromedio += getDano(hechizo);
+        }
+        return (danoPromedio / hechizos.size())+getPoderMagico();
+    }
+
+    public int getDano(String hechizo) {
+        int danoBase = 0;
+        switch (hechizo) {
+            case "Escarcha":
+                danoBase = 15;
+                break;
+            case "Tormenta de Hielo":
+                danoBase = 30;
+                break;
+            case "Bola de Hielo":
+                danoBase = 25;
+                break;
+            case "Bola de Fuego":
+                danoBase = 30;
+                break;
+            case "Inferno":
+                danoBase = 40;
+                break;
+            case "Lanzallamas":
+                danoBase = 35;
+                break;
+            case "Descarga Electrica":
+                danoBase = 20;
+                break;
+            case "Rayo Electrico":
+                danoBase = 25;
+                break;
+            case "Tormenta Electrica":
+                danoBase = 35;
+                break;
+            default:
+
+        }
+        return danoBase + poderMagico;
+    }
+}
+
+class Arquero extends Personaje {
+
+    private double precision;
+    private ArrayList<String> habilidadesDistancia;
+
+    public Arquero(double precision, ArrayList<String> habilidadesDistancia, double puntoVida, int nivelExpe) {
+        super(puntoVida, nivelExpe);
+        this.precision = precision;
+        this.habilidadesDistancia = habilidadesDistancia;
+    }
+
+    public double getPrecision() {
+        return precision;
+    }
+
+    public void setPrecision(double precision) {
+        this.precision = precision;
+    }
+
+    public ArrayList<String> getHabilidadesDistancia() {
+        return habilidadesDistancia;
+    }
+
+    public void setHabilidadesDistancia(ArrayList<String> habilidadesDistancia) {
+        this.habilidadesDistancia = habilidadesDistancia;
+    }
+
+    public void defensa() {
+    }
+
+    @Override
+    public int ataque() {
+        // Devuelve el daño promedio de las habilidades del arquero
+        int danoPromedio = 0;
+        for (String habilidad : habilidadesDistancia) {
+            danoPromedio += getDano(habilidad);
+        }
+        return (danoPromedio / habilidadesDistancia.size())+(int)getPrecision();
+    }
+
+    public int getDano(String habilidad) {
+        int danoBase = 0;
+        switch (habilidad) {
+            case "Disparo aturdidor":
+                danoBase = 10;
+                break;
+            case "Disparo a dos objetivos":
+                danoBase = 15;
+                break;
+            case "Disparo certero":
+                danoBase = 20;
+                precision = 100; // Aumenta la precisión al 100%
+                break;
+            case "Trampa de oso":
+                danoBase = 25;
+                break;
+            case "Disparo elemental":
+                danoBase = 40; // Hace el doble de daño al 200%
+                break;
+            default:
+
+        }
+        return (int) (danoBase * (precision / 100.0));
+    }
+
+}
